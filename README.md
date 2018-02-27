@@ -5,8 +5,17 @@ This is a sample application showing integration of [Stripe](https://stripe.com)
 
 > You can view a live version of this site running https://chargehound-demo-fzakaria.herokuapp.com. Please note however that it uses an in-memory database.
 
+This is a very minimal [flask](flask.pocoo.org) application. There are many production best practices that have been ommitted in order to provide clarity and simplicity in demonstrating the integration.
+
 To get started all you have to do is `make run`.
 This will start a *development server* running on your local host on port *5000*.
+
+```
+export STRIPE_PUBLISHABLE_KEY=pk_test_yoursecret
+export STRIPE_SECRET_KEY=sk_test_yoursecret
+export CHARGEHOUND_SECRET_KEY=test_yoursecret
+make run
+```
 
 ## Stripe Information
 

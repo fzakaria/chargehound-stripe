@@ -58,7 +58,7 @@ def dispute():
 		chargehound.Disputes.submit(dispute_id,
 			template = 'song-purchase',
 			fields = {
-				'purchase_url': url_for('charge', song_slug=song_slug),
+				'purchase_url': url_for('charge', song_slug=song_slug, _external=True),
 				'song_artist': song['artist'],
 				'song_name': song['title']
 			})

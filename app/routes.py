@@ -3,7 +3,6 @@ from app import app,stripe_keys
 from app.db import all_songs, find_song_by_slug, insert_charge, find_slug_by_charge
 import stripe
 import chargehound
-import json
 
 @app.context_processor
 def inject_constants():
@@ -39,7 +38,7 @@ def charge(song_slug : str):
 @app.route('/chargehound/dispute', methods=['POST'])
 def dispute():
 	# Retrieve the request's body and parse it as JSON
-	event_json = json.loads(request.body)
+	event_json = request.json
 
 	# 1) Handle the dispute.created event
 	if event_json['type'] == 'dispute.created':

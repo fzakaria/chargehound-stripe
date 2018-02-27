@@ -39,6 +39,8 @@ The integration with stripe is using the test keys -- they therefore accept the 
 
 For more information on these test cards please see: https://stripe.com/docs/testing#disputes & https://stripe.com/docs/testing#cards.
 
+You can read also about more about the [ChargeHound+Stripe Integration](https://testing-chargehound-pr-1027.herokuapp.com/docs?template=song-purchase&processor=stripe).
+
 ## Heroku Setup
 
 In order to run on heroku the following were set:

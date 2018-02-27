@@ -60,8 +60,8 @@ def dispute():
 			template = 'song-purchase',
 			fields = {
 				'purchase_url': url_for('charge', song_slug=song_slug),
-				'song_artist': song.artist,
-				'song_name': song.title
+				'song_artist': song['artist'],
+				'song_name': song['title']
 			})
 	
 	return Response(status=200, mimetype='application/json')

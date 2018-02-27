@@ -1,2 +1,5 @@
 # venv is the python virtual environment
 venv
+
+# don't commit python cached files
+__pycache__

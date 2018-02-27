@@ -23,3 +23,4 @@ stripe.api_key = stripe_keys['secret_key']
 app = Flask(__name__)
 
 from app import routes
+from app import admin

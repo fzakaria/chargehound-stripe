@@ -47,12 +47,11 @@ def dispute():
 		dispute_id = event_json['dispute']
 		# Fetch the dispute from Stripe
 		dispute = stripe.Dispute.retrieve(dispute_id)
+		charge_id = dispute.charge
+		app.logger.info('Received a dispute with id:%s and charge_id:%s', dispute_id, charge_id)
 
 		# 2) Collect your evidence to send to Chargehound.
-		charge_id = dispute.charge
-
 		song_slug = find_slug_by_charge(charge_id)
-
 		song = find_song_by_slug(song_slug)
 
 		# 3) POST your evidence to the Chargehound API to respond

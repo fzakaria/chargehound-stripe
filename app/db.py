@@ -29,18 +29,21 @@ MEMORY_SONGS = [
 
 ];
 
-CHARGES = [
+MEMORY_CHARGES = [
 ]
+
+def all_charges() -> list:
+	return list(MEMORY_CHARGES)
 
 def find_slug_by_charge(charge_id : str) -> str:
 	"""Find the song slug that was purchased by charge_id. Returns none if it cannot find any."""
-	for charge in CHARGES:
+	for charge in MEMORY_CHARGES:
 		if charge['charge_id'] == charge_id:
 			return charge
 	return None	
 
 def insert_charge(charge_id : str, slug : str):
-	CHARGES.append(
+	MEMORY_CHARGES.append(
 		{ 
 			"charge_id" : charge_id,
 			"slug" : slug

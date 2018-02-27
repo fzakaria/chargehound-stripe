@@ -1,43 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="row">
-	    <div class="6 columns">
-	    	<h4>Online Music Store </h4>
-	    </div>
-    </div>
-        <div class="row">
+	<div class="row">
 
-        {% for song in songs %}
+	{% for song in songs %}
 
-		    <form action="/charge/{{ song.slug }}" method="POST">
+	    <form action="/charge/{{ song.slug }}" method="POST">
 
-			  <div class="row">
-			    <div class="six columns">
-			      <img src="{{ song.image_url }}" />
-			    </div>
-			  </div>
-			  <label>{{song.title}}</label>
-			  <em>{{song.price}}</em>
-	    	  <p>{{song.description}}</p>
+		  <div class="row">
+		    <div class="six columns">
+		      <img src="{{ song.image_url }}" />
+		    </div>
+		  </div>
+		  <label>{{song.title}}</label>
+		  <em>{{song.price}}</em>
+		  <p>{{song.description}}</p>
 
-  		    	<!-- 
-		    		This is the necessary code for stripe checkout so that they generate a stripe button
-		    		https://stripe.com/docs/checkout#integration-simple
-		        -->
-		    	 <script
-					src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-					data-key={{stripe_pub_key}}
-					data-amount="{{song.price * 100}}"
-					data-name="{{song.name}}"
-					data-description="A song purchase"
-					data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-					data-locale="auto"
-					data-zip-code="true">
-				</script>
-			</form>
+		    	<!-- 
+	    		This is the necessary code for stripe checkout so that they generate a stripe button
+	    		https://stripe.com/docs/checkout#integration-simple
+	        -->
+	    	 <script
+				src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				data-key={{stripe_pub_key}}
+				data-amount="{{song.price * 100}}"
+				data-name="{{song.name}}"
+				data-description="A song purchase"
+				data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+				data-locale="auto"
+				data-zip-code="true">
+			</script>
+		</form>
 
-        {% endfor %}
+	{% endfor %}
 
-    </div>
+	</div>
 {% endblock %}

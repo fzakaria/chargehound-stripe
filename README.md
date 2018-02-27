@@ -19,13 +19,13 @@ make run
 
 The following routes are expose:
 
-*/* The base path, where you can see some albums and purchase them.
+**/** The base path, where you can see some albums and purchase them.
 
-*/charge/<song_slug>* The callback/webhook for stripe to initiate the charge after they've validated the credit card.
+**/charge/<song_slug>** The callback/webhook for stripe to initiate the charge after they've validated the credit card.
 
-*/chargehound/dispute* The callback/webhook for chargehound after they've discovered a dispute from their Stripe integration.
+**/chargehound/dispute** The callback/webhook for chargehound after they've discovered a dispute from their Stripe integration.
 
-*/admin/charges* An admin view that just returns the current in-memory charges processed.
+**/admin/charges** An admin view that just returns the current in-memory charges processed.
 
 ## Stripe Information
 

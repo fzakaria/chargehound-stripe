@@ -29,6 +29,23 @@ def charge(song_slug : str):
 
 	return render_template('charge.html', amount=charge.amount, email=customer.email)
 
+@app.route('/charge/<song_slug>', methods=['POST'])
+def my_webhook_view(request):
+  # Retrieve the request's body and parse it as JSON
+  event_json = json.loads(request.body)
+
+  # 1) Handle the dispute.created event
+  if event_json['type'] == 'dispute.created':
+    # The id of the dispute.
+    # The id used by your payment processor is also used by Chargehound.
+    dispute_id = event_json['dispute']
+
+    # 2) Collect your evidence to send to Chargehound.
+
+    # 3) POST your evidence to the Chargehound API to respond
+
+  return HttpResponse(status=200)
+
 @app.route('/')
 @app.route('/songs')
 def index():

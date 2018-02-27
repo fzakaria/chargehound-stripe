@@ -1,13 +1,16 @@
 certifi==2018.1.18
 chardet==3.0.4
+chargehound==2.3.0
 click==6.7
 Flask==0.12.2
 idna==2.6
 itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==1.0
+munch==2.2.0
 requests==2.18.4
 simplejson==3.13.2
+six==1.11.0
 stripe==1.79.0
 urllib3==1.22
 Werkzeug==0.14.1

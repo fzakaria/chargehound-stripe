@@ -62,7 +62,7 @@ def dispute():
 				'purchase_url': url_for('charge', song_slug=song_slug, _external=True),
 				'song_artist': song['artist'],
 				'song_name': song['title'],
-				'charge_statement_descriptor': "Chargehound & Stripe integration test."
+				'charge_statement_descriptor': "chargehound dispute."
 			})
 	
 	return Response(status=200, mimetype='application/json')

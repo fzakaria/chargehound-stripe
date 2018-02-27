@@ -3,6 +3,14 @@ from app import app,stripe_keys
 from app.db import all_songs, find_song_by_slug, insert_charge, find_slug_by_charge
 import stripe
 import chargehound
+"""
+The main routes this app supports:
+
+/ The base path, where you can see some albums and purchase them.
+/charge/<song_slug> The callback for stripe to initiate the charge after they've validated the credit card.
+/chargehound/dispute The callback/webhook for chargehound after they've discovered a dispute from their Stripe integration.
+/admin/charges** An admin view that just returns the current in-memory charges processed.
+"""
 
 @app.context_processor
 def inject_constants():

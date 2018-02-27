@@ -33,6 +33,7 @@ MEMORY_CHARGES = [
 ]
 
 def all_charges() -> list:
+	"""Get all charges. Returns a copy."""
 	return list(MEMORY_CHARGES)
 
 def find_slug_by_charge(charge_id : str) -> str:

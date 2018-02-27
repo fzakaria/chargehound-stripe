@@ -12,9 +12,9 @@ stripe_keys = {
 }
 
 # Setup our chargehound client with the secret key that is fetched from environment variable
-# we also change the host to the test API forcibly -- as this is a test application specifically
 chargehound.api_key = os.environ['CHARGEHOUND_SECRET_KEY']
-chargehound.host = 'https://test-api.chargehound.com'
+# Make the host configurable so we can point to test-api.chargehound.com
+chargehound.host = os.getenv('CHARGE_HOUND_HOST', 'api.chargehound.com')
 
 stripe.api_key = stripe_keys['secret_key']
 

@@ -39,7 +39,7 @@ def find_slug_by_charge(charge_id : str) -> str:
 	"""Find the song slug that was purchased by charge_id. Returns none if it cannot find any."""
 	for charge in MEMORY_CHARGES:
 		if charge['charge_id'] == charge_id:
-			return charge
+			return charge['slug']
 	return None	
 
 def insert_charge(charge_id : str, slug : str):

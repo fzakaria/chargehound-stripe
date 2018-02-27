@@ -3,10 +3,11 @@ This is a in-memory database. You probably want to replace this with some actual
 sqlite.
 """
 
-MEMORY = [
+MEMORY_SONGS = [
 
 	{
 		"title": "Anti",
+		"artist": "Rihanna",
 		"slug" : "rihanna-anti",
 		"description": """Anti is the eighth studio album by Barbadian singer Rihanna.
 						It was released on January 27, 2016, through Westbury Road and Roc Nation.""",
@@ -16,6 +17,7 @@ MEMORY = [
 
 	{
 		"title": "Neck of the Woods",
+		"artist": "Silversun Pickups",
 		"slug" : "neck-of-the-woods",
 		"description": """Neck of the Woods is the third studio album by Los Angeles alternative rock band Silversun Pickups.
 						  The album was produced by Jacknife Lee (R.E.M., Bloc Party) and was released on May 8, 2012
@@ -25,16 +27,33 @@ MEMORY = [
 
 	},	
 
-
 ];
+
+CHARGES = [
+]
+
+def find_slug_by_charge(charge_id : str) -> str:
+	"""Find the song slug that was purchased by charge_id. Returns none if it cannot find any."""
+	for charge in CHARGES:
+		if charge['charge_id'] == charge_id:
+			return charge
+	return None	
+
+def insert_charge(charge_id : str, slug : str):
+	CHARGES.append(
+		{ 
+			"charge_id" : charge_id,
+			"slug" : slug
+		}
+	)
 
 def all_songs() -> list:
 	"""Get all songs. Returns a copy."""
-	return list(MEMORY)
+	return list(MEMORY_SONGS)
 
 def find_song_by_slug(slug : str) -> dict:
 	"""Find a song by slug. Returns none if it cannot find any."""
-	for song in MEMORY:
+	for song in MEMORY_SONGS:
 		if song['slug'] == slug:
 			return song
 	return None

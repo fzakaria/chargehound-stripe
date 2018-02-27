@@ -38,3 +38,21 @@ The integration with stripe is using the test keys -- they therefore accept the 
 *disputed cc as inquiry* 4000 0000 0000 1976
 
 For more information on these test cards please see: https://stripe.com/docs/testing#disputes & https://stripe.com/docs/testing#cards.
+
+## Heroku Setup
+
+In order to run on heroku the following were set:
+
+```
+CHARGEHOUND_SECRET_KEY: test_your_key
+CHARGE_HOUND_HOST:      test-api.chargehound.com
+FLASK_APP:              chargehound-demo.py
+FLASK_DEBUG:            1
+PREFERRED_URL_SCHEME:   https
+SERVER_NAME:            chargehound-demo-fzakaria.herokuapp.com
+STRIPE_PUBLISHABLE_KEY: pk_test_your_key
+STRIPE_SECRET_KEY:      sk_test_your_key
+WEB_CONCURRENCY:        1
+```
+
+The one *gotcha* is that **WEB_CONCURRENCY** should be 1 since we are storing data in memory only -- otherwise gunicorn spawns multiple processes and they don't share data. This not a problem when storing data in a separate process like a database.

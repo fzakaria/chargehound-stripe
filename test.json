@@ -1,7 +1,0 @@
-{
-  "id": "wh_9674580f-bb51-4ee9-b8f8-f916eb72a171",
-  "livemode": false,
-  "object": "webhook",
-  "type": "dispute.created",
-  "dispute": "dp_1C00YQD7pmkWGuuU8itLqwF0"
-}

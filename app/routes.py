@@ -19,6 +19,9 @@ def inject_constants():
 
 @app.route('/charge/<song_slug>', methods=['POST'])
 def charge(song_slug : str):
+	"""This is a callback after stripe has verified the customers payment information.
+	   They provide us with a token which we can then perform a charge -- which has already been validated.
+	   We store the returned charge_id though in the case of any future disputes"""
 	song = find_song_by_slug(song_slug)
 	if song is None:
 		abort(404)
@@ -45,6 +48,11 @@ def charge(song_slug : str):
 
 @app.route('/chargehound/dispute', methods=['POST'])
 def dispute():
+	"""Chargehound will call this method once it has polled a dispute from Stripe.
+	   (Stripe integration must be setup with your account)
+	   Chargehound helps resolve disputes by providing a programmatic way to respond to disputes. 
+	   Using the dispute_id we lookup the charge and find the evidence needed to fight the dispute!"""
+
 	# Retrieve the request's body and parse it as JSON
 	event_json = request.json
 
@@ -79,6 +87,8 @@ def dispute():
 @app.route('/')
 @app.route('/songs')
 def index():
+	"""This is the main home index"""
+
 	# add the song url
 	songs = all_songs()
 	for song in songs:

@@ -10,7 +10,8 @@
 
         {% for song in songs %}
 
-		    <form>
+		    <form action="/charge/{{ song.slug }}" method="POST">
+
 			  <div class="row">
 			    <div class="six columns">
 			      <img src="{{ song.image_url }}" />
@@ -19,7 +20,21 @@
 			  <label>{{song.title}}</label>
 			  <em>{{song.price}}</em>
 	    	  <p>{{song.description}}</p>
-			  <input class="button-primary" type="submit" value="Purchase">
+
+  		    	<!-- 
+		    		This is the necessary code for stripe checkout so that they generate a stripe button
+		    		https://stripe.com/docs/checkout#integration-simple
+		        -->
+		    	 <script
+					src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+					data-key={{stripe_pub_key}}
+					data-amount="{{song.price * 100}}"
+					data-name="{{song.name}}"
+					data-description="A song purchase"
+					data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+					data-locale="auto"
+					data-zip-code="true">
+				</script>
 			</form>
 
         {% endfor %}

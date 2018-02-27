@@ -10,7 +10,7 @@ tests:  venv
 
 .PHONY: run
 run: venv
-	FLASK_DEBUG=1 FLASK_APP=chargehound-demo.py flask run
+	PUBLISHABLE_KEY=pk_test_WPIC5FsWhN3tZMu5Kpn9KWbT SECRET_KEY=sk_test_Rsuv0YBjzFWfgb8LYU0QNGwA FLASK_DEBUG=1 FLASK_APP=chargehound-demo.py flask run
 
 install:
 	echo "Installing packages from requirements.txt"

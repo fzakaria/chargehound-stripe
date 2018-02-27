@@ -62,6 +62,7 @@ def dispute():
 				'purchase_url': url_for('charge', song_slug=song_slug, _external=True),
 				'song_artist': song['artist'],
 				'song_name': song['title'],
+				# max 25 characters
 				'charge_statement_descriptor': "chargehound dispute."
 			})
 	

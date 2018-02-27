@@ -3,6 +3,8 @@
 This is a sample application showing integration of [Stripe](https://stripe.com) with
 [ChargeHound](https://www.chargehound.com).
 
+> You can view a live version of this site running https://chargehound-demo-fzakaria.herokuapp.com. Please note however that it uses an in-memory database.
+
 To get started all you have to do is `make run`.
 This will start a *development server* running on your local host on port *5000*.
 

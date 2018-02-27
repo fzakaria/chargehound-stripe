@@ -33,7 +33,7 @@ def charge(song_slug : str):
 	# join table
 	insert_charge(charge.id, song_slug)
 
-	return render_template('charge.html', amount=charge.amount, email=customer.email)
+	return render_template('charge.html', amount=song['price'], email=customer.email)
 
 @app.route('/chargehound/dispute', methods=['POST'])
 def dispute():
@@ -45,9 +45,11 @@ def dispute():
 		# The id of the dispute.
 		# The id used by your payment processor is also used by Chargehound.
 		dispute_id = event_json['dispute']
+		# Fetch the dispute from Stripe
+		dispute = stripe.Dispute.retrieve(dispute_id)
 
 		# 2) Collect your evidence to send to Chargehound.
-		charge_id = dispute_id.charge
+		charge_id = dispute.charge
 
 		song_slug = find_slug_by_charge(charge_id)
 
